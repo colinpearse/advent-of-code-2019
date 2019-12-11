@@ -1,4 +1,4 @@
-# Advent of Code 2019
+# [Advent of Code 2019](https://adventofcode.com/2019)
 
 These scripts are written in python3
 
@@ -17,8 +17,4 @@ These scripts are written in python3
 * **11** robot painter
 
 *Note: the python scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
-
-## Links
-
-* [Advent of Code 2019](https://adventofcode.com/2019)
 
