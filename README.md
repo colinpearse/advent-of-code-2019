@@ -1,7 +1,5 @@
 # [Advent of Code 2019](https://adventofcode.com/2019)
 
-These scripts are written in python3
-
 ## Days
 
 1) calculate fuel
@@ -16,5 +14,5 @@ These scripts are written in python3
 10) laser asteroids
 11) robot painter
 
-*Note: the python scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
+*Note: the python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
