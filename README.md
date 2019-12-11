@@ -12,7 +12,7 @@
 8) image layers
 9) intcode computer relative mode
 10) laser asteroids
-11) robot painter
+11) intcode computer robot painter
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
