@@ -16,7 +16,7 @@ These scripts are written in python3
 * **10** laser asteroids
 * **11** robot painter
 
-*Note: the python scripts don't have execute permissions and are run using `python <script>` or `python3 <script>*
+*Note: the python scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
 ## Links
 
