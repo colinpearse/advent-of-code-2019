@@ -2,7 +2,11 @@
 
 These scripts are written in python3
 
-## List
+## Days
+
+1) ewfew
+2) fewwef
+
 
 * **1** calculate fuel
 * **2** intcode computer 1202
