@@ -14,5 +14,5 @@
 10) laser asteroids
 11) robot painter
 
-*Note: the python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
+*Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
