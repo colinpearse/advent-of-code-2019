@@ -110,13 +110,14 @@ class Moons:
                 if self.recvel[moon][ax][i1] != self.recvel[moon][ax][i2]:
                     return False
         return True
-                
+    
+    # bottleneck: finding the period. I tried using array.array() but it's not faster.
     def findseq(self, a):
         m = 10
         for i in range(1,int(len(a)/2)):
             if m < int(len(a)/2) and a[0:m] == a[i:i+m]:
                 m *= 10
-                if a[0:i] == a[i:i*2]:
+                if m > i or a[0:i] == a[i:i*2]:
                     return i
         return 0
     
