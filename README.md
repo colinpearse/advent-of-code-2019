@@ -14,6 +14,7 @@
 10) laser asteroids
 11) intcode computer robot painter
 12) moons position and velocity
+13) intcode computer breakout
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
