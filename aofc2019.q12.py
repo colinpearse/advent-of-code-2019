@@ -114,7 +114,7 @@ class Moons:
     def findseq(self, a):
         m = 10
         for i in range(1,int(len(a)/2)):
-            if a[0:m] == a[i:i+m]:
+            if m < int(len(a)/2) and a[0:m] == a[i:i+m]:
                 m *= 10
                 if a[0:i] == a[i:i*2]:
                     return i
