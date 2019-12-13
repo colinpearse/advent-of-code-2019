@@ -173,19 +173,19 @@ def advent12a(positions, nsteps):
     print ("energy =", m.energy(), '\n')
 
 # find all the repeated sequences and find the lowest factor
-def advent12b(positions, isteps=100000):
+def advent12b(positions, isteps=10):
     print ()
     m = Moons(positions)
     m.mprint(); print ()
     ureps = []
     tsteps = isteps
     while ureps == []:
-        print ("total steps to find repeated pattern:", tsteps)
+        print ("do",tsteps,"more steps to find repeated pattern")
         m.steps(tsteps, pr=0)
         m.getseqs()
         #m.printseqs()
         ureps = list(m.getureps())
-        tsteps += isteps
+        tsteps *= isteps
     return lcm(ureps)
 
     
