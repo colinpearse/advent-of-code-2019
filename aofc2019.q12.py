@@ -33,7 +33,7 @@ class Moons:
         self.mpos = self.set_mpos(positions)
         self.mvel = self.zero_mvel()
         self.recpos = self.initrec(self.mpos)
-        self.recvel = self.initrec(self.mvel)
+        #self.recvel = self.initrec(self.mvel)  # not needed to find periods
         self.pseqs = self.initseqs()
         self.vseqs = self.initseqs()
         
@@ -100,23 +100,14 @@ class Moons:
         for moon in self.moons:
             for ax in self.axes:
                 self.recpos[moon][ax].append(self.mpos[moon][ax])
-                self.recvel[moon][ax].append(self.mvel[moon][ax])
-
-    def compare(self, i1, i2):
-        for moon in self.moons:
-            for ax in self.axes:
-                if self.recpos[moon][ax][i1] != self.recpos[moon][ax][i2]:
-                    return False
-                if self.recvel[moon][ax][i1] != self.recvel[moon][ax][i2]:
-                    return False
-        return True
+                #self.recvel[moon][ax].append(self.mvel[moon][ax])
     
     # bottleneck: finding the period. I tried using array.array() but it's not faster.
     def findseq(self, a):
-        m = 10
+        m = 2
         for i in range(1,int(len(a)/2)):
             if m < int(len(a)/2) and a[0:m] == a[i:i+m]:
-                m *= 10
+                m *= 2
                 if m > i or a[0:i] == a[i:i*2]:
                     return i
         return 0
@@ -126,22 +117,22 @@ class Moons:
             for ax in self.axes:
                 if self.pseqs[moon][ax] == 0:
                     self.pseqs[moon][ax] = self.findseq(self.recpos[moon][ax])
-                if self.vseqs[moon][ax] == 0:
-                    self.vseqs[moon][ax] = self.findseq(self.recvel[moon][ax])
+                    if self.pseqs[moon][ax] == 0:
+                        break
 
     def printseqs(self):
         for moon in self.moons:
             for ax in self.axes:
                 print (moon, ax, self.pseqs[moon][ax], self.vseqs[moon][ax])
 
-    # get unique repititions
+    # get unique repetitions (periods)
+    # NOTE: vseqs have the same periods so don't collect these
     def getureps(self):
         seqset = set()
         for moon in self.moons:
             for ax in self.axes:
-                if self.pseqs[moon][ax] > 0 and self.vseqs[moon][ax] > 0:
+                if self.pseqs[moon][ax] > 0:
                     seqset.add(self.pseqs[moon][ax])
-                    seqset.add(self.vseqs[moon][ax])
                 else:
                     return set()
         return seqset
@@ -174,19 +165,18 @@ def advent12a(positions, nsteps):
     print ("energy =", m.energy(), '\n')
 
 # find all the repeated sequences and find the lowest factor
-def advent12b(positions, isteps=10):
+def advent12b(positions, steps=1024, msteps=2):
     print ()
     m = Moons(positions)
     m.mprint(); print ()
     ureps = []
-    tsteps = isteps
     while ureps == []:
-        print ("do",tsteps,"more steps to find repeated pattern")
-        m.steps(tsteps, pr=0)
+        print ("do",steps,"more steps to find repeated pattern")
+        m.steps(steps, pr=0)
         m.getseqs()
         #m.printseqs()
         ureps = list(m.getureps())
-        tsteps *= isteps
+        steps *= msteps
     return lcm(ureps)
 
     
