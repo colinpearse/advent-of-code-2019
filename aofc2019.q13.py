@@ -258,16 +258,16 @@ def advent13a(prog):
     print ('blocks', blocks.count(2))
     return ret
 
-# -1 default is cursor right
-# 0 is an empty tile. No game object appears in this tile.
-# 1 is a wall tile. Walls are indestructible barriers.
-# 2 is a block tile. Blocks can be broken by the ball.
-# 3 is a horizontal paddle tile. The paddle is indestructible.
-# 4 is a ball tile. The ball moves diagonally and bounces off objects.
+# TERM_CURS_RIGHT default value of the matrix; the following values are mapped, see mapval:
+# 0 is an empty tile
+# 1 is a wall tile
+# 2 is a block tile
+# 3 is a horizontal paddle tile
+# 4 is a ball tile
 def advent13b(prog, mode='manual', delay=0.1):
     comp = IntBox(prog)
     comp.modify({0:2})
-    m = VLM(defval="\033[C")
+    m = VLM(defval=TERM_CURS_RIGHT)
     #fd = open("advent13.log", "w")
     score = 0
     ret = -1
