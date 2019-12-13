@@ -43,12 +43,12 @@ class VLM:
                 self.__setitem__(pos, mapval[val])
             else:
                 self.__setitem__(pos, val)
-	#"\033[F" – move cursor to the beginning of the previous line
-	#"\033[H" – home
-	#"\033[A" - up
-	#"\033[B" - down
-	#"\033[C" - right
-	#"\033[D" - left
+    # Just in case I need them:
+    #"\033[H" – home
+    #"\033[A" - up
+    #"\033[B" - down
+    #"\033[C" - right
+    #"\033[D" - left
     def printm(self, j="", revy=False, revx=False, message=""):
         if self.__firstprint == True:
             self.__firstprint = False
