@@ -1,6 +1,6 @@
 # python3
 
-# 13) run on xterm not Jupyter
+# 13) run auto/manual on xterm; auto only on Jupyter
 
 import sys
 import tty
