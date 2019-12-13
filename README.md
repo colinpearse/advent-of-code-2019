@@ -13,6 +13,7 @@
 9) intcode computer relative mode
 10) laser asteroids
 11) intcode computer robot painter
+12) moons position and velocity
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
