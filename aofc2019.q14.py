@@ -26,8 +26,8 @@ def make_reactions(data):
         reactions[rchem][qty] = setchems
     return reactions
 
-# if loops is enormous if can be reduced, last few are one by one to ensure
-# this test fails at the appropraite time: have[chem] >= need[chem]
+# if loops is enormous it can be reduced. The last few iterations are done one by one to
+# ensure this test "have[chem] >= need[chem]" in calc_ore() fails at the appropriate time
 def shortcut_loops(loops, limit):
     if loops > limit:
         m = loops - (limit-1)
