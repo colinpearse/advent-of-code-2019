@@ -7,7 +7,7 @@ import tty
 import termios
 import time
 
-# some #defines
+# some #defines  http://ascii-table.com/ansi-escape-sequences-vt-100.php
 TERM_CLEAR_SCREEN = chr(27)+'[2j'
 TERM_INIT_STATE   = chr(27)+'c'
 TERM_CURS_HOME    = chr(27)+'[H'
@@ -280,7 +280,7 @@ def advent13b(prog, mode='manual', delay=0.1):
             score = game[(-1,0)]
             del game[(-1,0)]
 
-        m.msetd(game, mapval={0:' ', 1:'|', 2:'X', 3:'-', 4:'o'})
+        m.msetd(game, mapval={0:' ', 1:'|', 2:'L', 3:chr(175), 4:'o'})
         m.printm('join', message="JOYSTICK: j,k,l (left,stay,right)  score:%d  delay=%1.3f"%(score,delay))
         #print ("SCORE:%d BALL:%s"%(score, getball(game)), file=fd)
 
