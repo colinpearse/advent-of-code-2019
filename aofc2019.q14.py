@@ -30,7 +30,7 @@ def make_reactions(data):
 # ensure this test "have[chem] >= need[chem]" in calc_ore() fails at the appropriate time
 def shortcut_loops(loops, limit):
     if loops > limit:
-        m = loops - (limit-1)
+        m = loops-limit
         loops -= m
     else:
         m = 1
