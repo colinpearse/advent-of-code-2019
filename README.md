@@ -16,6 +16,7 @@
 12) moons position and velocity
 13) intcode computer breakout
 14) ORE to FUEL
+15) intcode computer oxygen map
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
