@@ -26,6 +26,19 @@ def FAST_phase(numstr, start=1, end=-1):
         res.append(list(str(sum([a[j-1] * rpattern[j-start] for j in range(start,end)])))[-1])
     return ''.join(res)
 
+# VERY SLOW
+# import numpy as np
+# def NUMPY_phase(numstr, start=1, end=1):
+#     a = list(map(int, list(numstr)))
+#     lena = len(a)
+#     a = np.array(a)
+#     res = []
+#     for i in range(start, end):
+#         pattern = [0]*i + [1]*i + [0]*i + [-1]*i
+#         rpattern = np.array(list(pattern * ((int(lena / len(pattern))) + 1))[1:lena+1])
+#         res.append(str(sum(list(map(lambda e:int(str(e)[-1]), np.multiply(a, rpattern).tolist()))))[-1])
+#     return ''.join(res)
+
 def nphases(numstr, phases):
     for i in range(1,phases+1):
         numstr = FAST_phase(numstr)
@@ -53,7 +66,7 @@ print (advent16a('12345678', phases=4))   # 01029498
 print (advent16a('80871224585914546619083218645595', phases=100))  # 24176176
 print (advent16a('19617804207202209144916044189917', phases=100))  # 73745418
 print (advent16a('69317163492948606335995924319873', phases=100))  # 52432133
-#print ("16) answer part (a):", advent16a(advent16, phases=100))    # 27229269
+print ("16) answer part (a):", advent16a(advent16, phases=100))    # 27229269
 
 print ()
 print ("(b) work in progress - need to be able to reduce the end")
@@ -63,6 +76,7 @@ print (advent16b(teststr, m=20, oset=7, phases=100))
 print (advent16b(teststr, m=20, oset=7, phases=100, start=40, end=0))  
 print (advent16b(teststr, m=20, oset=7, phases=100, start=40, end=50))
 
+# currently about 8h to do the examples and they are only 32 bytes long!
 # print (advent16b('03036732577212944063491565474664', m=10000, oset=7, phases=100))   # 84462026
 # print (advent16b('02935109699940807407585447034323', m=10000, oset=7, phases=100))   # 78725270
 # print (advent16b('03081770884921959731165446850517', m=10000, oset=7, phases=100))   # 53553731
