@@ -17,7 +17,7 @@
 13) intcode computer breakout
 14) ORE to FUEL
 15) intcode computer oxygen map
-16) frequency offset - (b) not complete
+16) frequency offset (b: found solution)
 17) intcode computer robot dust
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
