@@ -244,5 +244,5 @@ print ('shortest', advent18a(eg1))  # 8
 print ('shortest', advent18a(eg2))  # 86
 print ('shortest X', advent18a(eg3))  # 136
 print ('shortest', advent18a(eg4))  # 81
-print ('shortest X', advent18a(readtext(advent18a_file), loadfile="advent18a.pkl", savefile=""))
+print ('shortest X', advent18a(readtext(advent18a_file), loadfile="advent18a.pkl", savefile="")) # 3862 (after 14 million iterations)
 

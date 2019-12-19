@@ -1,12 +1,10 @@
 # python3
 
-# 17) run auto/manual on xterm; auto only on Jupyter
+# 19) run on xterm
 
 import sys
 import tty
 import termios
-import pickle
-import time
 
 # some #defines  http://ascii-table.com/ansi-escape-sequences-vt-100.php
 TERM_CLEAR_SCREEN = chr(27)+'[2j'
