@@ -19,6 +19,8 @@
 15) intcode computer oxygen map
 16) frequency offset (b: found solution)
 17) intcode computer robot dust
+18) shortest path with keys and doors - UNSOLVED
+19) intcode computer tractor beam
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
