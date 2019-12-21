@@ -17,10 +17,12 @@
 13) intcode computer breakout
 14) ORE to FUEL
 15) intcode computer oxygen map
-16) frequency offset (b: found solution)
+16) frequency offset (b: found solution elsewhere)
 17) intcode computer robot dust
-18) shortest path with keys and doors - UNSOLVED
+18) shortest path with keys and doors (a+b: UNSOLVED)
 19) intcode computer tractor beam
+20) shortest path with gates
+21) intcode computer AND OR NOT (a+b: UNSOLVED)
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
