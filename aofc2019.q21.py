@@ -330,4 +330,4 @@ RUN
 '''
 
 print ("21) answer part (a):", advent21a(advent21prog, rprog21a))   # 19353619
-print ("21) answer part (b):", advent21b(advent21prog, rprog21b))   # 
+#print ("21) answer part (b):", advent21b(advent21prog, rprog21b))   # 
