@@ -1,113 +1,8 @@
 # python3
 
-# 23) run auto/manual on xterm; auto only on Jupyter
+# 23)
 
 import sys
-import tty
-import termios
-import pickle
-import time
-
-# some #defines  http://ascii-table.com/ansi-escape-sequences-vt-100.php
-TERM_CLEAR_SCREEN = chr(27)+'[2j'
-TERM_INIT_STATE   = chr(27)+'c'
-TERM_CURS_HOME    = chr(27)+'[H'
-TERM_CURS_UP      = chr(27)+'[A'
-TERM_CURS_DOWN    = chr(27)+'[B'
-TERM_CURS_LEFT    = chr(27)+'[D'
-TERM_CURS_RIGHT   = chr(27)+'[C'
-TERM_CLEAR_SEQ    = TERM_CLEAR_SCREEN+TERM_INIT_STATE+TERM_CURS_HOME
-
-# Very Large Matrix
-class VLM:
-    def __init__(self, minx=0, miny=0, maxx=0, maxy=0, defval=0):
-        self.__m = {}
-        self.__Dm = {}  # displayed matrix, unlike m it will include defval
-        self.__defval = defval
-        self.__minx = minx
-        self.__miny = miny
-        self.__maxx = maxx
-        self.__maxy = maxy
-        self.__clearscreen = TERM_CLEAR_SCREEN+TERM_INIT_STATE+TERM_CURS_HOME
-
-    def __setminmax(self, pos):
-        x,y = pos
-        if x < self.__minx: self.__minx = x  #; self.__clearscreen = TERM_CLEAR_SEQ
-        if y < self.__miny: self.__miny = y  #; self.__clearscreen = TERM_CLEAR_SEQ
-        if x > self.__maxx: self.__maxx = x  #; self.__clearscreen = TERM_CLEAR_SEQ
-        if y > self.__maxy: self.__maxy = y  #; self.__clearscreen = TERM_CLEAR_SEQ
-
-    def __setitem__(self, pos, val):
-        self.__setminmax(pos)
-        if val == self.__defval:
-            if pos in self.__m:
-                del self.__m[pos]
-        else:
-            self.__m[pos] = val
-
-    def __getitem__(self, pos):
-        self.__setminmax(pos)
-        return self.__m[pos] if pos in self.__m else self.__defval
-
-    def mset(self, a, val):
-        for pos in a:
-            self.__setitem__(pos, val)
-
-    def msetd(self, d, mapval={}):
-        for pos,val in d.items():
-            if len(mapval) > 0:
-                self.__setitem__(pos, mapval[val])
-            else:
-                self.__setitem__(pos, val)
-
-    # printm() helpers
-    def __setminx(self, rev):
-        return self.__maxx   if rev else self.__minx
-    def __setminy(self, rev):
-        return self.__maxy   if rev else self.__miny
-    def __setmaxx(self, rev):
-        return self.__minx-1 if rev else self.__maxx+1
-    def __setmaxy(self, rev):
-        return self.__miny-1 if rev else self.__maxy+1
-    def __setincx(self, rev):
-        return -1 if rev else 1
-    def __setincy(self, rev):
-        return -1 if rev else 1
-    def __getc(self, pos):
-        c = self.__getitem__(pos)
-        if pos in self.__Dm and c == self.__Dm[pos]:
-             c = TERM_CURS_RIGHT
-        else:
-             self.__Dm[pos] = c
-        return c
-    def __outputline(self, line, j):
-        if j == "join":
-            if set(line) == set([TERM_CURS_RIGHT]):
-                sys.stdout.write(TERM_CURS_DOWN)
-            else:
-                print (''.join(list(map(str, line))))
-        else:
-            print (line)
-
-    def printm(self, j="", revy=False, revx=False, message=""):
-        self.__Dm = {}  # don't use display cache for now
-        sys.stdout.write(self.__clearscreen)
-        self.__clearscreen = TERM_CURS_HOME
-        print('\n'+message+'\n')
-        minx = self.__setminx(revx)
-        miny = self.__setminy(revy)
-        maxx = self.__setmaxx(revx)
-        maxy = self.__setmaxy(revy)
-        incx = self.__setincx(revx)
-        incy = self.__setincy(revy)
-        for y in range(0, miny, incy):
-            sys.stdout.write(TERM_CURS_DOWN)
-        for y in range(miny, maxy, incy):
-            line = []
-            for x in range(minx, maxx, incx):
-                line.append(self.__getc((x,y)))
-            self.__outputline(line, j)
-        sys.stdout.flush()
 
 # Very Large Array
 class VLA:
@@ -229,50 +124,6 @@ class IntBox:
             else:
                 raise Exception(opcode)
 
-def printarr(lines):
-    for line in lines:
-        print (line)
-
-def joinarr(lines):
-    return [''.join(line) for line in lines]
-
-def out2arr(O, remO=[]):
-    line = []
-    lines = []
-    for e in O:
-        if e == 10:
-            lines.append(''.join(line))
-            line = []
-        else:
-            if e not in remO:
-                if e <= 0 or e > 255:
-                    line.append('chr('+str(e)+')')
-                else:
-                    line.append(chr(e))
-    return lines
-
-def out2map(gmap, pos, O):
-    x,y = pos
-    miny = y
-    for e in O:
-        if e == 10:
-            if x == 0:  # is it two newlines (redraw)?
-                y = miny
-            else:
-                y += 1
-            x = 0
-        else:
-            if e <= 0 or e > 255:
-                gmap[pos] = e
-            else:
-                gmap[pos] = chr(e)
-            x += 1
-        pos = (x,y)
-    return gmap, pos
-
-def swapdict(d):
-    return dict([(v,k) for k,v in d.items()]) 
-
 # TERM_CURS_RIGHT default value of the matrix; the following values are mapped, see mapval:
 def advent23a(prog, delay=0.2):
     comp = [IntBox(prog) for addr in range(50)]
@@ -321,7 +172,7 @@ def advent23b(prog, delay=0.2):
             print ("---ALL IDLE--- sending %s to addr=0"%(str(NAT)), file=fdlog)
             Inet[0] += [NAT]
             if NATo and NATo == NAT:
-                ret = [NAT[1]]
+                ret = NAT[1]
                 break
             else:
                 NATo = NAT
