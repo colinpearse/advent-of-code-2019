@@ -124,7 +124,7 @@ class VLA:
 
     def __setitem__(self, idx, val):
         self.__setalen(idx)
-        if val == 0:
+        if val == self.__defval:
             if idx in self.__a:
                 del self.__a[idx]
         else:
@@ -318,16 +318,11 @@ rprog21b='''NOT T T
 AND A T
 AND B T
 AND C T
-AND D T
-AND E T
-AND F T
-AND G T
 NOT T T
-OR H J
-AND I J
+OR D J
 AND T J
 RUN
 '''
 
-print ("21) answer part (a):", advent21a(advent21prog, rprog21a))   # 19353619
-#print ("21) answer part (b):", advent21b(advent21prog, rprog21b))   # 
+#print ("21) answer part (a):", advent21a(advent21prog, rprog21a))   # 19353619
+print ("21) answer part (b):", advent21b(advent21prog, rprog21b))   # 
