@@ -2,7 +2,6 @@
 
 # 24)
 
-import copy
 import itertools
 import collections
 
@@ -60,6 +59,7 @@ def getcol(grid, leny, col):
         s += grid[y][col]
     return s
 
+# HACK: hard-coded positions for 5x5 grid
 def count_bugs_inf(ogrid, grid, igrid, y, x, leny, lenx):
     bugs = 0
     if y-1 >= 0    and grid[y-1][x] == BUG: bugs += 1
@@ -76,6 +76,7 @@ def count_bugs_inf(ogrid, grid, igrid, y, x, leny, lenx):
     if (y,x+1) == (2,2): bugs += list(getcol(ogrid, leny, 0)).count(BUG)        
     return bugs
 
+# HACK: more hard-coded positions!
 def set_tile(ogrid, grid, igrid, y, x, leny, lenx):
     if (y,x) == (2,2):
         return SPACE
@@ -145,9 +146,9 @@ def advent24b(grid, initgrid, mins=999):
     #print_grids(tgrids, leny)
     #for minute in itertools.count():
     for minute in range(mins):
-        fgrids = collections.deque(copy.deepcopy(tgrids))
-        fgrids.extendleft([copy.deepcopy(initgrid)])
-        fgrids.extend([copy.deepcopy(initgrid)])
+        fgrids = collections.deque(tgrids)
+        fgrids.extendleft([initgrid])
+        fgrids.extend([initgrid])
 
         ngrid = minute_passed_inf(fgrids, centre, leny, lenx)
         tgrids = collections.deque([ngrid])   # always without outermost/innermost initgrid
@@ -155,7 +156,7 @@ def advent24b(grid, initgrid, mins=999):
         outer = centre
         while outer-1 > 0 or count_gbugs(fgrids[outer]) > 0:
             if outer-1 == 0:
-                fgrids.extendleft([copy.deepcopy(initgrid)])
+                fgrids.extendleft([initgrid])
                 centre += 1
             else:
                 outer -= 1
@@ -166,7 +167,7 @@ def advent24b(grid, initgrid, mins=999):
         while inner+2 < len(fgrids) or count_gbugs(fgrids[inner]) > 0:
             inner += 1
             if inner+1 == len(fgrids):
-                fgrids.extend([copy.deepcopy(initgrid)])
+                fgrids.extend([initgrid])
             ngrid = minute_passed_inf(fgrids, inner, leny, lenx)
             tgrids.extend([ngrid])
 
