@@ -25,6 +25,7 @@
 21) intcode computer AND OR NOT (b: UNSOLVED)
 22) card shuffle (b: UNSOLVED)
 23) intcode computer network
+24) recursive grid bugs
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
