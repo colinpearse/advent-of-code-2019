@@ -172,7 +172,7 @@ def advent24b(grid, initgrid, mins=999):
             tgrids.extend([ngrid])
 
     bugs = print_gcounts(minute+1, tgrids)
-    print_grids(tgrids, leny)
+    if minute < 20: print_grids(tgrids, leny)
     return bugs
 
 eg1 = '''
