@@ -26,6 +26,7 @@
 22) card shuffle (b: UNSOLVED)
 23) intcode computer network
 24) recursive grid bugs
+25) intcode computer adventure weigh-in (b: needs all previous problems solved first)
 
 *Note: these python3 scripts don't have execute permissions and are run using `python <script>` or `python3 <script>`*
 
