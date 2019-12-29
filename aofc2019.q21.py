@@ -279,24 +279,24 @@ def advent21a(prog, rprog, delay=0.2):
     m = VLM(defval=TERM_CURS_RIGHT)
     pos = (0,0)
     gmap = {}
-    fdlog = open("advent21.log", "w")
+    #fdlog = open("advent21.log", "w")
 
     I = list(map(lambda c:ord(c), list(rprog)))
-    print ("INPUT", joinarr(out2arr(I)), file=fdlog)
+    #print ("INPUT", joinarr(out2arr(I)), file=fdlog)
     ret,O = comp.run(I)
-    print ("OUTPUT", joinarr(out2arr(O)), file=fdlog)
+    #print ("OUTPUT", joinarr(out2arr(O)), file=fdlog)
     printarr(out2arr(O))
 
     ret = -1
     while ret != 0:
         ret,O = comp.run(I, retO=[10,10])
-        print ("OUTPUT", joinarr(out2arr(O)), file=fdlog)
+        #print ("OUTPUT", joinarr(out2arr(O)), file=fdlog)
         I = []
         gmap, pos = out2map(gmap, pos, O)
         m.msetd(gmap)
         m.printm(j='join', message="Q21  delay=%1.3f  ret=%d  Olen=%d       "%(delay, ret, len(O)))
         time.sleep(delay)
-    fdlog.close()
+    #fdlog.close()
     return gmap[(0,0)] if isinstance(gmap[(0,0)],int) else 0
 
 def advent21b(prog, rprog, delay=0.2):
