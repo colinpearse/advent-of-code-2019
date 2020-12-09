@@ -68,7 +68,7 @@ def advent8b(file, r, c):
         print (row)
 
 
-advent8a_file = "advent8a.txt"
+advent8a_file = "aofc2019.08a.txt"
 advent8a(advent8a_file, 6, 25)  # 1340
 
 advent8b(advent8a_file, 6, 25)  # LEJKC

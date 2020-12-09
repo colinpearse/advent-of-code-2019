@@ -444,7 +444,7 @@ RE....#.#                           #......RF
                A O F   N                     
                A A D   M                     
 '''
-advent20a_file = 'advent20a.txt'
+advent20a_file = 'aofc2019.20a.txt'
 
 print ('shortest', advent20a(text=eg1))  # 23
 print ('shortest', advent20a(text=eg2))  # 58

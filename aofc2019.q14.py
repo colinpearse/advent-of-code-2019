@@ -127,7 +127,7 @@ eg2 = '''
 165 ORE => 2 GPVTF
 3 DCFZ, 7 NZVS, 5 HKGWZ, 10 PSHF => 8 KHKGT
 '''
-advent14a_data = "advent14a.txt"
+advent14a_data = "aofc2019.14a.txt"
 
 print (advent14a(eg1))  # 31
 print (advent14a(eg2))  # 13312

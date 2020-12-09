@@ -28,8 +28,8 @@ def calc_advent1b(file):
         total_fuel += calc_recursive_fuel(int(line))
     return total_fuel
 
-advent1a_file = "advent1a.txt"
-advent1b_file = "advent1a.txt"  # use same file
+advent1a_file = "aofc2019.01a.txt"
+advent1b_file = "aofc2019.01a.txt"  # use same file
 
 # Egs part (1a).
 print (calc_fuel(12))       # 2

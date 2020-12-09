@@ -221,7 +221,7 @@ cut -1
 '''
 
 advent22a_cards = list(range(10007))
-advent22a_file = 'advent22a.txt'
+advent22a_file = 'aofc2019.22a.txt'
 
 advent22b_cards   = 119315717514047
 advent22b_shuffle = 101741582076661

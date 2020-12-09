@@ -52,10 +52,10 @@ def calc_orbitals(orbpairs, start, end):
     return scount + ecount
 
 advent6a_eg1 = [['COM','B'],['B','C'],['C','D'],['D','E'],['E','F'],['B','G'],['G','H'],['D','I'],['E','J'],['J','K'],['K','L']]
-advent6a = readfile('advent6a.txt')
+advent6a = readfile('aofc2019.06a.txt')
 
 advent6b_eg1 = [['COM','B'],['B','C'],['C','D'],['D','E'],['E','F'],['B','G'],['G','H'],['D','I'],['E','J'],['J','K'],['K','L'],['K','YOU'],['I','SAN']]
-advent6b = readfile('advent6a.txt')
+advent6b = readfile('aofc2019.06a.txt')
 
 print (calc_orbits(advent6a_eg1))  # 42
 print ("6) answer part (a):", calc_orbits(advent6a))      # 194721

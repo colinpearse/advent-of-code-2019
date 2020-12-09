@@ -202,7 +202,7 @@ def advent18a(lines, loadfile="", savefile=""):
     k2k      = load_k2k(loadfile, savefile, maze, allkeys+[begin])
     return keypath(k2k, begin, allkeys+[begin], topm=5, topn=1000)
 
-advent18a_file = 'advent18a.txt'
+advent18a_file = 'aofc2019.18a.txt'
 eg1 = '''
 #########
 #b.A.@.a#
@@ -244,5 +244,5 @@ print ('shortest', advent18a(eg1))  # 8
 print ('shortest', advent18a(eg2))  # 86
 print ('shortest X', advent18a(eg3))  # 136
 print ('shortest', advent18a(eg4))  # 81
-print ('shortest X', advent18a(readtext(advent18a_file), loadfile="advent18a.pkl", savefile="")) # 3862 (after 14 million iterations)
+print ('shortest X', advent18a(readtext(advent18a_file), loadfile="aofc2019.18a.pkl", savefile="")) # 3862 (after 14 million iterations)
 
